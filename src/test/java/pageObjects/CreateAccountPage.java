@@ -87,6 +87,12 @@ public class CreateAccountPage extends CreateAccountPageElementMapper {
     public void fillAddress(){
         boxAddressAddress1.sendKeys("Rossie St");
     }
+    public void clickAddressBoxAddress2(){
+        boxAddressAddress2.click();
+    }
+    public void fillBoxAddress2(){
+        boxAddressAddress2.sendKeys("Apartment");
+    }
 
     public void clickCity(){
         boxCity.click();
@@ -119,6 +125,8 @@ public class CreateAccountPage extends CreateAccountPageElementMapper {
         fillAddressCompany();
         clickAddressAddress();
         fillAddress();
+        clickAddressBoxAddress2();
+        fillBoxAddress2();
         clickCity();
         fillCity();
         clickState();

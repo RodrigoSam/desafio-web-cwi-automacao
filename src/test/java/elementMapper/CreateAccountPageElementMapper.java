@@ -38,6 +38,9 @@ public class CreateAccountPageElementMapper {
     @FindBy(css = "#address1.form-control")
     public WebElement boxAddressAddress1;
 
+    @FindBy(id = "address2")
+    public WebElement boxAddressAddress2;
+
     @FindBy(id = "city")
     public WebElement boxCity;
 

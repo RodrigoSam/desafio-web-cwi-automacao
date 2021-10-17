@@ -1,24 +1,24 @@
 package tests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.junit.Assert;
 import org.junit.Test;
-import pageObjects.CreateAccountPage;
-import pageObjects.HomePage;
-import pageObjects.LoginPage;
-import pageObjects.ValidationsElements;
+import pageObjects.*;
 import utils.Browser;
 import utils.Utils;
 
+@Feature("Testes em site de e-commerce")
 public class setupTests extends baseTests {
-    //Iniciar Teste
     @Test
-
-    //Abrir a página home do site
-    public void openingBrowserAndLoadingPage(){
+    @Story("Iniciar Teste de Fluxo de cadastro")
+    @Step("Abrir a página home do site")
+        public void openingBrowserAndLoadingPage(){
         Assert.assertTrue(Browser.getCurrentDriver().getCurrentUrl().contains(Utils.getBaseUrl()));
         System.out.println("Abrir o navegador, maximizar e carregar a Url ok");
 
-    //Instanciar as classes
+        //Instanciar as classes
         HomePage home = new HomePage();
         ValidationsElements validation = new ValidationsElements();
         LoginPage login = new LoginPage();
@@ -26,49 +26,122 @@ public class setupTests extends baseTests {
 
         //Clicar em SignIn na página do site
         home.clickButtonSignIn();
-        System.out.println("Clicar em SignIn na home ok ");
 
         //Validar se estamos na página Authentication
-        Assert.assertTrue(validation.isPageAuthentication());
-        System.out.println("Validar página Authentication ok");
+        login.isPageAuthentication();
 
         //Clicar no campo Email Address do box Create Account e preenche-lo
         login.clickBoxEmailCreate();
-        System.out.println("Clicar no campo Email Address ok");
-        login.fillEmailadressToCreateAccount();
-        System.out.println("Campo Create Account preenchido ok");
+        login.fillEmailAddressToCreateAccount();
 
         //Clicar em Create an account
         login.clickSubmitCreate();
-        System.out.println("Clicar no botão Create an account ok");
 
         //Validar se estamos na página
-        Assert.assertTrue(validation.isPageCreateAccount());
-        System.out.println("Validar se estamos na página Create account ok");
-
-        //Fazer o preenchimento dos campos para cadastro
+        create.isPageCreateAccount();
 
         //Preenchimento dos campos Your Personal Information
-
         create.fillInAllPersonalInformation();
 
         //Preenchimento dos campos Your address
-
         create.fillAllAddressInformation();
 
         //Preenchimento dos campos Adicionais
-
-        create.fillAllAditionalsInformations();
+        create.fillAllAdditionalInformation();
 
         //Registrar o Cadastro
-
         create.clickRegister();
 
+        //Validar se está na página Authentication, e o cadastro foi concluído com sucesso
+        validation.isPageAuthentication();
+    }
 
+    @Test
+    @Story("Realizar teste de fluxo automatizado de compra")
+    public void testFluxoDeCompra() {
+        //Instanciar as classes
+        HomePage home = new HomePage();
+        LoginPage login = new LoginPage();
+        ValidationsElements validation = new ValidationsElements();
+        MyAccountPage myaccount = new MyAccountPage();
+        ProductPage pdp = new ProductPage();
 
+        //Entrar Página de Login
+        home.clickButtonSignIn();
 
+        //Preencher os campos de Email e Password e fazer o login
+        login.makeLogin();
 
+        //Validar se estamos na página My account
+        validation.isPageAuthentication();
 
+        //Clicar na categoria Dresses
+        myaccount.clickMenuDresses();
+
+        //Validar se estamos na página Dresses
+        validation.isPageDresses();
+        System.out.println("Validação página Dresses ok");
+
+        //Clicar no produto escolhido na página Dress
+        pdp.ClickProductBuy();
+
+        //Validar se estamos na página Printed Dress
+        validation.isPagePrintDress();
+        System.out.println("Página Printed Dress ok");
+
+        //Fazer uma avaliação na área Reviews
+        pdp.accessTheCommentAreaAndCompleteTheFlow();
+
+        //Selecionar as características do produto
+        pdp.chooseProductFeatures();
+
+        //Adicionar o produto ao Cart
+        pdp.clickButtonAddToCart();
+
+        //Validar se a mercadoria foi adicionada com sucesso no carrinho de compras
+        validation.isModalSuccessfully();
+        System.out.println("Validação modal ok");
+
+        //clicar no botão Proceed to checkout no modal
+        pdp.clickButtonModalProceedToCheckout();
+
+        //Validar se está na página summary
+        validation.isPageSummary();
+        System.out.println("Validação Summary ok");
+
+        //Próximos passos para finalização
+        pdp.clickButtonProceedCheckoutSummary();
+
+        //Preencher campo comentário sobre o pedido
+        pdp.fillCommentBox();
+
+        //Continuar os passos para finalização
+        pdp.clickButtonProceedCheckoutAddress();
+
+        //Validar se estamos na página Shipping
+        validation.isPageShipping();
+
+        //Clicar no box Terms of Service e prosseguir
+        pdp.clickBoxTermsOfService();
+        pdp.clickButtonProceedToCheckoutShipping();
+
+        //Validar se estamos na página Payment
+        validation.isPagePayment();
+        System.out.println("Validação página Payment ok");
+
+        //Escolher método e pagamento
+        pdp.clickButtonPayByBankWire();
+
+        //Validar a página que mostra o método
+        validation.isPageOrderSummary();
+        System.out.println("Validação da página Order Summary ok");
+
+        //Confirmar Ordem de Pagamento
+        pdp.clickButtonIConfirmMyOrder();
+
+        //Validação compra executada com sucesso
+        validation.isPageOrderConfirmation();
+        System.out.println("Validação do fluxo de compra executada com sucesso ok");
 
     }
 

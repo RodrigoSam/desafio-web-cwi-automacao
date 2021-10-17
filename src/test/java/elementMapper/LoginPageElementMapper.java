@@ -10,4 +10,15 @@ public class LoginPageElementMapper {
 
     @FindBy(css= ("#SubmitCreate") )
     public WebElement SubmitCreate;
+
+    public WebElement email;
+
+    public WebElement passwd;
+
+    public WebElement SubmitLogin;
+
+
+
+
+
 }

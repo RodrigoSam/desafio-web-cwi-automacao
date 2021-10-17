@@ -1,6 +1,8 @@
 package pageObjects;
 
 import elementMapper.CreateAccountPageElementMapper;
+import io.qameta.allure.Step;
+import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
 import utils.Browser;
 
@@ -54,6 +56,7 @@ public class CreateAccountPage extends CreateAccountPageElementMapper {
     public void clickBoxReceiveOffers(){
         boxReceiveOffers.click();
     }
+    @Step("Preenchimento dos campos Your Personal Information")
     public void fillInAllPersonalInformation(){
         clickButtonGen();
         clickBoxFirstName();
@@ -118,7 +121,7 @@ public class CreateAccountPage extends CreateAccountPageElementMapper {
     public void fillCountry(){
         boxCoutry.sendKeys("United States");
     }
-
+    @Step("Preenchimento de informações de endereço")
     public void fillAllAddressInformation(){
 
         clickAddressBoxCompany();
@@ -163,7 +166,8 @@ public class CreateAccountPage extends CreateAccountPageElementMapper {
     public void fillEndReference(){
         boxEndReference.sendKeys("Evergreen Terrace, 632");
     }
-    public void fillAllAditionalsInformations(){
+    @Step("Preenchimento das informações adicionais")
+    public void fillAllAdditionalInformation(){
         clickBoxAdditionalInformaion();
         fillBoxAdditionalInformation();
         clickBoxHomePhone();
@@ -175,9 +179,16 @@ public class CreateAccountPage extends CreateAccountPageElementMapper {
         System.out.println("Informações adicionais ok");
 
     }
+    @Step("Registrar cadastro")
     public void clickRegister(){
         boxRegister.click();
         System.out.println("Cadastro Registrado ok");
+    }
+        ValidationsElements validation = new ValidationsElements();
+    @Step("Validar se está na página Create account")
+    public void isPageCreateAccount(){
+        Assert.assertTrue(validation.isPageCreateAccount());
+        System.out.println("Validar se estamos na página Create account ok");
     }
 
 

@@ -14,6 +14,7 @@ public class baseTests {
 
     @After
     public void tearDown(){
-        Browser.close();
+    Browser.print();
+    Browser.close();
     }
 }

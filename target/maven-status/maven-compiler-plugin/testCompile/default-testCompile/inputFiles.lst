@@ -1,0 +1,16 @@
+/Users/rodrigo/code/desafioWebCwi/src/test/java/tests/setupTests.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/tests/baseTests.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/pageObjects/ProductPage.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/pageObjects/CreateAccountPage.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/elementMapper/ValidationElementsElementMapper.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/utils/Utils.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/elementMapper/ProductPageElementMapper.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/pageObjects/MyAccountPage.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/elementMapper/HomePageElementMapper.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/pageObjects/LoginPage.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/elementMapper/LoginPageElementMapper.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/pageObjects/HomePage.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/elementMapper/MyAccountPageElementMapper.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/pageObjects/ValidationsElements.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/elementMapper/CreateAccountPageElementMapper.java
+/Users/rodrigo/code/desafioWebCwi/src/test/java/utils/Browser.java
